@@ -1,14 +1,15 @@
-const express = require('express');
+const express = require("express");
 const {
   saveWorkflow,
   executeWorkflow,
-} = require('../controller/workflow');
-const upload = require('../utils/multer');
+  getWorkflow,
+} = require("../controller/workflow");
+const upload = require("../utils/multer");
 
 const router = express.Router();
 
-router.post('/saveworkflow', saveWorkflow);   
-router.post('/executeworkflow', upload.single('csvFile'), executeWorkflow);
-
+router.post("/addWorkflow", saveWorkflow);
+router.get("/workflowList", getWorkflow);
+router.post("/uploadFile", upload.single("csvFile"), executeWorkflow);
 
 module.exports = router;

@@ -1,17 +1,21 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const workflowSchema = new mongoose.Schema({
   nodes: {
-    type: Array,  // Array of nodes (steps)
+    type: Array, // Array of nodes (steps)
     required: true,
   },
   edges: {
-    type: Array,  // Array of connections (edges)
+    type: Array, // Array of connections (edges)
     required: true,
   },
   name: {
     type: String,
     required: true,
+  },
+  uniqueId: {
+    type: String,
+    unique: true, // Ensure the ID is unique
   },
   createdAt: {
     type: Date,
@@ -19,4 +23,4 @@ const workflowSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Workflow', workflowSchema);
+module.exports = mongoose.model("Workflow", workflowSchema);
